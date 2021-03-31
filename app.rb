@@ -1,10 +1,10 @@
 require_relative 'cookbook'
 require_relative 'controller'
-require_relative 'route'
+require_relative 'router'
 
 cookbook = Cookbook.new
 controller = Controller.new(cookbook)
-route = Route.new(controller)
+router = Router.new(controller)
 
 # start the app
-route.run
+router.run

@@ -24,6 +24,7 @@ class Router
     when 2 then @controller.create
     when 3 then @controller.destroy
     when 4 then stop
+    end
   end
 
   def stop
