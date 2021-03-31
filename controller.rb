@@ -8,7 +8,8 @@ class Controller
   end
 
   def list
-    @cookbook.all
+    cookbook = @cookbook.all
+    @view.display(cookbook)
   end
 
   def create

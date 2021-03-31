@@ -9,8 +9,8 @@ class View
     return gets.chomp
   end
 
-  def list(cookbook)
-    cookbook.each_wiht_index  do |recipe, index|
+  def display(cookbook)
+    cookbook.each_with_index  do |recipe, index|
       puts "#{index + 1}. #{recipe.name} \n ###{recipe.description}"
     end
   end
