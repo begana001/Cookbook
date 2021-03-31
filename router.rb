@@ -24,6 +24,8 @@ class Router
     when 2 then @controller.create
     when 3 then @controller.destroy
     when 4 then stop
+    else
+      puts "Please press 1, 2, 3 or 4"
     end
   end
 
