@@ -6,7 +6,7 @@ class View
 
   def ask_index(topic)
     puts "What is the index number of #{topic}?"
-    return gets.chomp
+    return gets.chomp.to_i
   end
 
   def display(cookbook)
