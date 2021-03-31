@@ -20,6 +20,7 @@ class Controller
   end
 
   def destroy
+    index = @view.ask_index
     @cookbook.delete(index)
   end
 end
