@@ -28,7 +28,8 @@ class Controller
 
   def find
     ingredient = @view.ask('name of recipe')
-    result = Parsing.new(ingredient)
+    parsing = Parsing.new(ingredient)
+    result = parsing.call
     @view.display(result)
   end
 end

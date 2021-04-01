@@ -13,7 +13,7 @@ class Parsing
 
     result = []
 
-    html_doc.search('.card-recipe').first(5).each do |element|
+    html_doc.search('.card__recipe').first(5).each do |element|
       name = element.search('.card__title').text.strip
       description = element.search('.card__summary').text.strip
       result << Recipe.new(name, description)
