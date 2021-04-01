@@ -1,5 +1,6 @@
 require_relative 'recipe'
 require_relative 'view'
+require_relative 'parsing'
 
 class Controller
   def initialize(cookbook)
@@ -23,5 +24,11 @@ class Controller
     list
     index = @view.ask_index('cookbook you want to delete')
     @cookbook.remove(index - 1)
+  end
+
+  def find
+    ingredient = @view.ask('name of recipe')
+    result = Parsing.new(ingredient)
+    @view.display(result)
   end
 end
