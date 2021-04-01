@@ -21,22 +21,32 @@ class Cookbook
     save_csv
   end
 
-  private
-
-  def open_csv
-    CSV.foreach(@csv_file) do |row|
-      #here, row is an array of columns
-      @cookbook << Recipe.new(row[0], row[1], row[2])
-    end
-
+  # method for mark as done
+  def mark_as_done(index)
+    recipe = @cookbook[index - 1]
+    recipe.mark_as_done!
+    save_csv
   end
+
+  private
 
   def save_csv
     CSV.open(@csv_file, 'wb')do |csv|
+      csv << ["name", "description", "rating", "done"]
       @cookbook.each do |recipe|
-        csv << [recipe.name, recipe.description, recipe.rating]
+        csv << [recipe.name, recipe.description, recipe.rating, recipe.done?]
       end
     end
+  end
+
+  def open_csv
+    # change csv converter since we change it into symbol
+    CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
+      #here, row is an array of columns
+      row[:done] = row[:done] == "true"
+      @cookbook << Recipe.new(row)
+    end
+
   end
 
 end

@@ -17,7 +17,7 @@ class Parsing
       name = element.search('.card__title').text.strip
       description = element.search('.card__summary').text.strip
       rating = element.search('.review-star-text').text.match(/\d/)
-      result << Recipe.new(name, description, rating)
+      result << Recipe.new(name: name, description: description, rating: rating)
     end
     result
   end

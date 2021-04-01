@@ -16,7 +16,8 @@ class Controller
   def create
     name = @view.ask('name of recipe')
     description = @view.ask('description of recipe')
-    recipe = Recipe.new(name, description)
+    rating = @view.ask('rating of the recipe')
+    recipe = Recipe.new(name: name, description: description, rating: rating)
     @cookbook.add(recipe)
   end
 
@@ -34,5 +35,12 @@ class Controller
     index = @view.ask_index('index of the recipe do you want to add')
     recipe = result[index-1]
     @cookbook.add(recipe)
+  end
+
+  def mark_as_done
+    list
+    index = @view.ask_index('index of the recipe do you want to mark')
+    @cookbook.mark_as_done(index)
+    list
   end
 end
