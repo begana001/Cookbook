@@ -32,7 +32,6 @@ class Cookbook
 
   def save_csv
     CSV.open(@csv_file, 'wb')do |csv|
-      csv << ["name", "description", "rating", "done"]
       @cookbook.each do |recipe|
         csv << [recipe.name, recipe.description, recipe.rating, recipe.done?]
       end
@@ -41,7 +40,8 @@ class Cookbook
 
   def open_csv
     # change csv converter since we change it into symbol
-    CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
+    csv_options = {col_sep: ',', quote_char: '"', headers: :first_row, header_converters: :symbol }
+    CSV.foreach(@csv_file, csv_options) do |row|
       #here, row is an array of columns
       row[:done] = row[:done] == "true"
       @cookbook << Recipe.new(row)
