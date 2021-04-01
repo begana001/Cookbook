@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require 'recipe'
+require_relative 'recipe'
 
 class Parsing
   def initialize(ingredient)
